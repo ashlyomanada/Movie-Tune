@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieTune</title>
+    <link rel="stylesheet" href="movie.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Poppins:wght@100;200;300;400;600;800&family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-container">
+        <h1>MOVIETUNE</h1>
+        <button class="menuExitBtn">
+          <i class="fa-solid fa-xmark fa-2xl"></i>
+        </button>
+      </div>
+      <hr />
+      <ul class="navlist">
+        <li>
+          <button class="buttons buttons-active" data-btn-id="1">
+            <i class="fa-solid fa-house fa-xl"></i>HOME
+          </button>
+        </li>
+        <li>
+          <button class="buttons">
+            <i class="fa-solid fa-video fa-xl"></i>MOVIES
+          </button>
+        </li>
+        <li>
+          <button class="buttons">
+            <i class="fa-solid fa-clapperboard fa-xl"></i>SERIES
+          </button>
+        </li>
+        <li>
+          <button class="buttons">
+            <i class="fa-regular fa-heart fa-xl"></i>FAVORITE
+          </button>
+        </li>
+      </ul>
+      <hr />
+      <ul class="navlist">
+        <h2 class="nav-title">Account</h2>
+        <li>
+          <button class="buttons">
+            <i class="fa-solid fa-user-check fa-xl"></i>JOHNSON
+          </button>
+        </li>
+        <li>
+          <button class="buttons">
+            <i class="fa-solid fa-user fa-xl"></i>LYLIA
+          </button>
+        </li>
+      </ul>
+      <hr />
+      <div class="logout-container">
+        <button class="buttons logOutBtn">
+          <i class="fa-solid fa-right-from-bracket fa-xl"></i>LOGOUT
+        </button>
+      </div>
+    </nav>
+
+    <div class="searchbar-container">
+      <div class="menuBtn-container">
+        <button class="menuBtn"><i class="fa-solid fa-bars fa-2xl"></i></button>
+      </div>
+      <div class="searchbar">
+        <input type="text" name="" id="searchbar" placeholder="Search" />
+        <button class="search-btn">
+          <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+        </button>
+      </div>
+      <div class="notification-container">
+        <button class="notificationBtn">
+          <i class="fa-regular fa-bell fa-xl"></i>
+        </button>
+        <p>johnson</p>
+        <span><i class="fa-solid fa-circle-user fa-xl"></i></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="display-container">
+        <div class="main-container" id="mainContainer">
+          <h2 class="movie-title">LIGHTYEAR</h2>
+        </div>
+        <p class="short-description">
+          The film follows Buzz Lightyear (Evans) operating as a space ranger
+          who, after being marooned on the hostile planet T'Kani Prime with his
+          commander and crew, tries to find a way back home while encountering a
+          threat to the universe's safety.
+        </p>
+        <h1 class="header">MOVIES</h1>
+        <div class="movie-container"></div>
+      </div>
+    </div>
+    <script src="scripts/api.js"></script>
+  </body>
+</html>
