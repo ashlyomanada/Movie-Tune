@@ -1,0 +1,368 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-image: url("thumbnails/buzz-lightyear.jpg");
+  background-size: cover;
+  backdrop-filter: blur(5px);
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  transition: 0.3s ease;
+}
+::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as needed */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px; /* Optional: Add rounded corners */
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 16vw;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  transition: 0.5s ease linear;
+}
+.navbar-animation {
+  animation: navbar 1s ease;
+}
+.menuExitBtn {
+  display: none;
+}
+@keyframes navbar {
+  from {
+    width: 0vw;
+  }
+  to {
+    width: 16vw;
+  }
+}
+.navlist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo-container {
+  padding: 1rem 0 0.5rem 0;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.buttons {
+  width: 16vw;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+}
+.buttons:hover {
+  opacity: 0.7;
+  backdrop-filter: blur(100px);
+}
+.buttons-active {
+  opacity: 0.7;
+  backdrop-filter: blur(100px);
+}
+.nav-title {
+  display: grid;
+  place-items: center;
+}
+.logOutBtn {
+  display: flex;
+  gap: 2.2rem;
+}
+hr {
+  width: 60%;
+}
+.logout-container {
+  display: flex;
+}
+.logoutBtn {
+  background: none;
+}
+.fa-user {
+  padding-right: 0.5rem;
+}
+.searchbar-container {
+  position: fixed;
+  right: 0;
+  width: 84vw;
+  height: 10vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(80px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  transition: ease 0.5s;
+}
+.searchbar-animation {
+  animation: searchbar 1s ease;
+}
+@keyframes searchbar {
+  from {
+    top: -10%;
+  }
+  to {
+    top: 0;
+  }
+}
+.menuBtn-container {
+  display: none;
+}
+.searchbar {
+  padding: 0.8rem;
+  display: flex;
+}
+#searchbar {
+  padding: 0.5rem 1rem;
+  width: 20vw;
+  border-radius: 1rem;
+  border: none;
+  color: black;
+}
+.search-btn {
+  padding: 0.5rem;
+  background: none;
+  border: none;
+}
+.notification-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+  margin-right: 0.1rem;
+}
+.notificationBtn {
+  background: none;
+  border: none;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  padding: 11.5vh 0vw 0vh 17vw;
+}
+.display-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.main-container {
+  height: 100%;
+  width: 100%;
+  background-image: url("thumbnails/buzz-lightyear.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: 0.5s ease;
+}
+
+.movie-container {
+  height: 0%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.movie-title {
+  letter-spacing: 5px;
+  font-size: 3rem;
+  text-transform: uppercase;
+  filter: drop-shadow(17px 13px 7px #000);
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  transition: 0.5s ease;
+  font-weight: 600;
+}
+.short-description {
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: justify;
+}
+.movie-box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  background: none;
+  height: 50vh;
+  width: 15vw;
+}
+.active {
+  border: 2px solid yellow;
+}
+.movie-picture {
+  height: 80%;
+  width: 100%;
+}
+.movie-details {
+  height: 20%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.picture {
+  height: 100%;
+  width: 100%;
+}
+.details {
+  display: flex;
+  gap: 1rem;
+}
+.movie-details .details span.green {
+  color: green;
+}
+
+.movie-details .details span.orange {
+  color: orange;
+}
+
+.movie-details .details span.red {
+  color: red;
+}
+@media screen and (max-width: 992px) {
+  .navbar {
+    width: 25vw;
+    z-index: 1;
+  }
+  .buttons {
+    width: 25vw;
+  }
+  .searchbar-container {
+    height: 8vh;
+    width: 75vw;
+  }
+  .container {
+    padding-top: 9vh;
+    padding-left: 26vw;
+  }
+  .main-container {
+    height: 30%;
+    width: 94%;
+    margin: 1rem;
+  }
+  .movie-title {
+    font-size: 2rem;
+  }
+  .movie-box {
+    height: 35vh;
+    width: 35vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .navbar {
+    left: -100%;
+    width: 28vw;
+    transition: 0.5s ease;
+  }
+  .buttons {
+    width: 28vw;
+  }
+  .logo-container {
+    display: flex;
+    gap: 1rem;
+  }
+  .menuExitBtn {
+    display: unset;
+  }
+  .searchbar-container {
+    height: 8vh;
+    width: 100vw;
+  }
+  .menuBtn-container {
+    margin-left: 1rem;
+    display: unset;
+  }
+  .menuBtn {
+    padding: 0.8rem;
+    background: none;
+    border: none;
+  }
+  .menuExitBtn {
+    padding: 0.3rem;
+    background: none;
+    border: none;
+  }
+  .container {
+    padding-top: 9vh;
+    padding-left: 0;
+  }
+  .display-container {
+    align-items: center;
+  }
+  .main-container {
+    height: 30%;
+    width: 95%;
+    margin: 1rem;
+  }
+  .header {
+    display: flex;
+    align-self: center;
+  }
+  .movie-title {
+    font-size: 2.5rem;
+  }
+  .movie-box {
+    height: 35vh;
+    width: 30vw;
+  }
+
+  .movie-container {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .navbar {
+    width: 100vw;
+  }
+  .main-container {
+    width: 90%;
+  }
+
+  .movie-box {
+    height: 40vh;
+    width: 45vw;
+  }
+  .movie-title {
+    font-size: 1rem;
+  }
+  .logo-container {
+    display: flex;
+    gap: 5rem;
+  }
+  .buttons {
+    width: 100vw;
+  }
+}
