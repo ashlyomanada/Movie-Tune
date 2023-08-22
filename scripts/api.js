@@ -44,7 +44,6 @@ function showMovies(movies) {
 
   const buttons = document.querySelectorAll(".movie-box");
   const mainContainer = document.querySelector("#mainContainer");
-  const body = document.querySelector("body");
   const shortdescripEl = document.querySelector(".short-description");
   const movieTitle = document.querySelector(".movie-title");
 
@@ -58,9 +57,10 @@ function showMovies(movies) {
           mainContainer.style.backgroundImage = `url("${
             IMGPATH + matchingItem.backdrop_path
           }")`;
-          body.style.backgroundImage = `url("${
-            IMGPATH + matchingItem.backdrop_path
-          }")`;
+          mainContainer.style.display = "unset";
+          shortDescription.style.display = "unset";
+          mainContainer.style.display = "unset";
+          movieTitle.style.visibility = "unset";
           shortdescripEl.innerHTML = matchingItem.overview;
           movieTitle.innerHTML = matchingItem.title;
         }
@@ -88,6 +88,9 @@ const searchBtn = document.querySelector(".search-btn");
 const searchEl = document.querySelector("#searchbar");
 const movieContainer = document.querySelector(".movie-container");
 const navBtn = document.querySelectorAll(".buttons");
+const mainContainer = document.querySelector(".main-container");
+const movieTitle = document.querySelector(".movie-title");
+const shortDescription = document.querySelector(".short-description");
 
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -98,6 +101,9 @@ searchBtn.addEventListener("click", (e) => {
     getMovies(SEARCHAPI + searchValue);
     searchEl.value = "";
     movieContainer.innerHTML = "";
+    mainContainer.style.display = "none";
+    shortDescription.style.display = "none";
+    movieTitle.style.visibility = "hidden";
     navBtn.forEach((btn) => {
       btn.classList.remove("buttons-active");
     });
@@ -113,17 +119,18 @@ navBtn.forEach((btn) => {
   });
 });
 
-const menuBtn = document.querySelector(".menuBtn");
+const menuBtn = document.querySelectorAll(".menuBtn");
 const navBar = document.querySelector(".navbar");
 const menuContainer = document.querySelector(".menuBtn-container");
-const menuExitBtn = document.querySelector(".menuExitBtn");
 
-menuBtn.addEventListener("click", () => {
-  navBar.style.left = "0%";
-  menuContainer.style.visibility = "hidden";
-});
-
-menuExitBtn.addEventListener("click", () => {
-  navBar.style.left = "-100%";
-  menuContainer.style.visibility = "unset";
+menuBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (navBar.style.left === "-100%") {
+      navBar.style.left = "0%";
+      menuContainer.style.visibility = "hidden";
+    } else {
+      navBar.style.left = "-100%";
+      menuContainer.style.visibility = "unset";
+    }
+  });
 });
