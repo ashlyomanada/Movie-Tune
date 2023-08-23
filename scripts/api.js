@@ -46,6 +46,7 @@ function showMovies(movies) {
   const mainContainer = document.querySelector("#mainContainer");
   const shortdescripEl = document.querySelector(".short-description");
   const movieTitle = document.querySelector(".movie-title");
+  const movieInfo = document.querySelector(".movie-info");
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -61,6 +62,7 @@ function showMovies(movies) {
           shortDescription.style.display = "unset";
           mainContainer.style.display = "unset";
           movieTitle.style.visibility = "unset";
+          movieInfo.style.visibility = "unset";
           shortdescripEl.innerHTML = matchingItem.overview;
           movieTitle.innerHTML = matchingItem.title;
         }
@@ -91,6 +93,7 @@ const navBtn = document.querySelectorAll(".buttons");
 const mainContainer = document.querySelector(".main-container");
 const movieTitle = document.querySelector(".movie-title");
 const shortDescription = document.querySelector(".short-description");
+const movieInfo = document.querySelector(".movie-info");
 
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -104,6 +107,7 @@ searchBtn.addEventListener("click", (e) => {
     mainContainer.style.display = "none";
     shortDescription.style.display = "none";
     movieTitle.style.visibility = "hidden";
+    movieInfo.style.visibility = "hidden";
     navBtn.forEach((btn) => {
       btn.classList.remove("buttons-active");
     });
@@ -122,6 +126,7 @@ navBtn.forEach((btn) => {
 const menuBtn = document.querySelectorAll(".menuBtn");
 const navBar = document.querySelector(".navbar");
 const menuContainer = document.querySelector(".menuBtn-container");
+const movieExitBtn = document.querySelector(".movieExitBtn");
 
 menuBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -133,4 +138,12 @@ menuBtn.forEach((btn) => {
       menuContainer.style.visibility = "unset";
     }
   });
+});
+
+movieExitBtn.addEventListener("click", () => {
+  if (movieInfo.style.visibility === "unset") {
+    movieInfo.style.visibility = "hidden";
+  } else {
+    movieInfo.style.visibility = "unset";
+  }
 });
