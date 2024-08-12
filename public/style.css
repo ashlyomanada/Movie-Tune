@@ -35,7 +35,7 @@ body {
   align-items: center;
   gap: 0.8rem;
   transition: 0.2s ease;
-  z-index: 2;
+  z-index: 100;
 }
 .navbar-animation {
   animation: navbar 1s ease;
@@ -168,6 +168,12 @@ hr {
   justify-content: flex-end;
 }
 
+.posterDisplay {
+  height: 50vh;
+  width: 100%;
+  background: white;
+}
+
 .mainContainer {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -176,11 +182,10 @@ hr {
   overflow-y: auto;
   padding-top: 12vh;
   padding-right: 2.5vh;
-  position: relative;
 }
 .display-container {
   position: fixed;
-  height: 100%;
+  height: 90%;
   width: 82%;
   display: flex;
   flex-direction: column;
@@ -188,6 +193,7 @@ hr {
   bottom: 0;
   background-color: #000;
   right: 0.8rem;
+  z-index: 1;
 }
 .movie-info {
   position: absolute;
@@ -204,21 +210,21 @@ hr {
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
-  margin-top: 10vh;
+  margin-top: 1vh;
 }
 .movieExitBtn {
   position: absolute;
   padding: 1rem;
   height: 5vh;
   width: 5vh;
-  background: black;
+  background: transparent;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   right: 0;
-  top: 10vh;
+  top: 0vh;
 }
 .movie-container {
   height: 0%;

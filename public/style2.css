@@ -1,0 +1,373 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Apply to all elements */
+* {
+  scrollbar-width: thin; /* For Firefox: thin scrollbar */
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent; /* For Firefox: thumb color and track color */
+}
+
+/* WebKit Browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent; /* Transparent scrollbar track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly visible scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+:root {
+  --orange: orangered;
+  --white: white;
+}
+.MainContent {
+  scroll-snap-type: y mandatory;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  width: 100vw;
+  justify-content: space-around;
+  background: transparent;
+  color: var(--white);
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: background-color 0.3s ease; /* Smooth transition */
+  z-index: 100;
+}
+
+.navBar.scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* Background color when scrolled */
+}
+
+.logo-container {
+  width: 10%;
+}
+
+.navLists {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2rem;
+  list-style-type: none;
+  width: 50%;
+  margin: 0;
+}
+
+.anchor {
+  text-decoration: none;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.menuBtn {
+  color: var(--white);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.3rem;
+  border: none;
+  background: transparent;
+  display: none;
+}
+
+.search,
+.signBtn {
+  background: var(--orange);
+  color: var(--white);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+.mainContainer {
+  height: 100vh;
+  width: 100%;
+  background: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.movieInfo {
+  height: 50%;
+  width: 28%;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 3;
+  position: absolute;
+  left: 15%;
+  top: 25%;
+}
+
+.movieTitle {
+  font-size: 3rem;
+  letter-spacing: 4px;
+  line-height: 4rem;
+}
+
+.thumbnail {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.moviesContainer {
+  scroll-snap-align: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  color: var(--white);
+  padding: 10vh 7rem 0 7rem;
+  /* overflow-y: auto; */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* WebKit Browsers (Chrome, Safari, Edge) */
+.moviesContainer::-webkit-scrollbar {
+  width: 8px; /* Adjust the width to make it thin */
+}
+
+.moviesContainer::-webkit-scrollbar-track {
+  background: transparent; /* Transparent scrollbar track */
+}
+
+.moviesContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly visible scrollbar thumb */
+  border-radius: 10px;
+}
+
+/* Firefox */
+.moviesContainer {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent; /* Thumb color and track color */
+}
+
+.centerContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+  overflow-y: auto;
+}
+
+.boxesContainer {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  /* grid-template-rows: repeat(4, 1fr); */
+  gap: 1rem;
+  /* overflow-y: auto; */
+}
+
+.movieBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.3rem;
+  height: 350px;
+  /* border: 2px solid white; */
+}
+
+.moviePosterContainer {
+  height: 70%;
+}
+
+.moviePoster {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.movieInfos {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.showMovieInfoContainer {
+  height: 100%;
+  width: 100vw;
+  background: black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.movieBackdropContaiiner {
+  display: flex;
+  justify-content: flex-end;
+  height: 50vh;
+  width: 100vw;
+  padding: 0 5rem;
+  gap: 1rem;
+}
+
+.showedImage {
+  height: 100%;
+}
+
+.btnContainers {
+  display: flex;
+  gap: 1rem;
+}
+
+.closeBtn {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.selectedMovieInnfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.active {
+  color: orangered;
+  transition: color 0.3s ease;
+}
+
+.paginationNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 10vh;
+}
+
+.nextBtn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  background: var(--orange);
+  color: var(--white);
+}
+
+.movieTrailerContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.closebtnContainers {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .moviesContainer {
+    padding: 5vh 2rem 0 2rem;
+  }
+
+  .boxesContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .movieBackdropContaiiner {
+    flex-direction: column-reverse;
+  }
+
+  .navBar {
+    justify-content: space-between;
+    padding: 0 4rem;
+  }
+  .navLists {
+    position: absolute;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    background: black;
+    top: 0;
+    justify-content: center;
+    left: 0;
+    padding: 0;
+  }
+
+  .menuBtn {
+    display: unset;
+    z-index: 100;
+  }
+
+  .search {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .moviesContainer {
+    padding: 5vh 1rem 0 1rem;
+  }
+
+  .boxesContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .movieBackdropContaiiner {
+    padding: 0 1rem;
+    justify-content: center;
+  }
+
+  .movieBox {
+    height: 380px;
+    /* border: 2px solid white; */
+  }
+  .centerContainer {
+    padding: 4rem 0;
+  }
+}

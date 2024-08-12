@@ -1,7 +1,7 @@
 {
   "name": "movietuneapp",
   "short_name": "movietuneapp",
-  "theme_color": "#4DBA87",
+  "theme_color": "orangered",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
