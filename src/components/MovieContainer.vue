@@ -1,8 +1,8 @@
 <template>
-  <div id="moviesSection" class="moviesContainer">
-    <div class="centerContainer">
+  <div id="moviesSection" class="movieSection">
+    <div class="movieSectionContainer">
       <h3>Trending</h3>
-      <div class="boxesContainer">
+      <div class="movieboxesContainer">
         <div
           class="movieBox"
           v-for="movie in movies"
@@ -17,8 +17,14 @@
             />
           </div>
           <div class="movieInfos">
-            <h5>{{ movie.title }}</h5>
-            <!-- <p>120min | Action</p> -->
+            <h5 class="title">{{ movie.title }}</h5>
+            <p>
+              <span
+                class="subTitle"
+                :class="getClassByRate(movie.vote_average)"
+                >{{ movie.vote_average }}</span
+              >
+            </p>
           </div>
         </div>
       </div>
@@ -30,6 +36,12 @@
           <h3>{{ selectedMovie.title }}</h3>
           <p>{{ selectedMovie.overview }}</p>
           <p>Released : {{ selectedMovie.release_date }}</p>
+          <p>
+            Rating:
+            <span :class="getClassByRate(selectedMovie.vote_average)">{{
+              selectedMovie.vote_average
+            }}</span>
+          </p>
           <div class="btnContainers">
             <button
               @click.prevent="getMovieTrailer(selectedMovie.id)"
@@ -53,7 +65,7 @@
     <!-- Bootstrap Modal -->
     <div
       class="modal fade"
-      id="trailerModal"
+      id="trailerModal2"
       tabindex="-1"
       aria-labelledby="trailerModalLabel"
       aria-hidden="true"
@@ -131,9 +143,10 @@ export default {
 
       this.trailerLink = `https://www.youtube.com/embed/${founded.key}`;
       this.isTrailerShow = true;
-      const modalElement = document.getElementById("trailerModal");
+      const modalElement = document.getElementById("trailerModal2");
       const modalInstance = new Modal(modalElement);
       modalInstance.show();
+      console.log(this.trailerLink);
     },
 
     showMovieInfo(movies) {
@@ -143,8 +156,9 @@ export default {
       this.selectedMovie.overview = movies.overview;
       this.selectedMovie.poster_path = movies.poster_path;
       this.selectedMovie.release_date = movies.release_date;
+      this.selectedMovie.vote_average = movies.vote_average;
       this.isShowMovieInfo = !this.isShowMovieInfo;
-      //   console.log(this.selectedMovie.id);
+      // console.log(movies);
     },
 
     closeMovieInfo() {
@@ -156,6 +170,16 @@ export default {
       const modalInstance = new Modal(modalElement);
       modalInstance.hide();
       this.trailerLink = null;
+    },
+
+    getClassByRate(vote) {
+      if (vote > 8) {
+        return "green";
+      } else if (vote >= 5) {
+        return "orange";
+      } else {
+        return "red";
+      }
     },
   },
 };

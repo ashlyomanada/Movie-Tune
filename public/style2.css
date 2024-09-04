@@ -55,7 +55,7 @@
 }
 
 .navBar.scrolled {
-  background-color: rgba(0, 0, 0, 0.8); /* Background color when scrolled */
+  background-color: black; /* Background color when scrolled */
 }
 
 .logo-container {
@@ -136,16 +136,18 @@
 
 .moviesContainer {
   scroll-snap-align: center;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
   display: flex;
   flex-direction: column;
   background: black;
   color: var(--white);
   padding: 10vh 7rem 0 7rem;
-  /* overflow-y: auto; */
   position: relative;
   overflow-x: hidden;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
 }
 
 /* WebKit Browsers (Chrome, Safari, Edge) */
@@ -193,6 +195,28 @@
   /* overflow-y: auto; */
 }
 
+.movieSection {
+  background-color: black;
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.movieSectionContainer {
+  padding: 10vh 7rem 0 7rem;
+}
+
+.movieboxesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: auto 1fr;
+  column-gap: 0.5rem;
+}
+
+.title,
+.subTitle {
+  font-size: 0.8rem;
+}
+
 .movieBox {
   display: flex;
   flex-direction: column;
@@ -232,6 +256,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: fixed;
+  z-index: 100;
 }
 
 .movieBackdropContaiiner {
@@ -308,6 +334,18 @@
   padding: 1rem;
 }
 
+.green {
+  color: green;
+}
+
+.orange {
+  color: orange;
+}
+
+.red {
+  color: red;
+}
+
 @media screen and (max-width: 768px) {
   .moviesContainer {
     padding: 5vh 2rem 0 2rem;
@@ -347,9 +385,16 @@
   .search {
     display: none;
   }
+
+  .movieSectionContainer {
+    padding: 1rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
+  .title {
+    font-size: 1rem;
+  }
   .moviesContainer {
     padding: 5vh 1rem 0 1rem;
   }
@@ -370,4 +415,16 @@
   .centerContainer {
     padding: 4rem 0;
   }
+
+  .movieTitle {
+    font-size: 2rem;
+    letter-spacing: 4px;
+    line-height: 2rem;
+  }
 }
+/* 
+@media screen and (max-width: 400px) {
+  .movieBox {
+    height: 330px;
+  }
+} */

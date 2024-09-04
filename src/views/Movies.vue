@@ -53,88 +53,7 @@
       <button class="search" @click.prevent="searchMovie">Search</button>
     </nav>
 
-    <div
-      id="carouselExampleIndicators"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="movieInfo">
-            <h1 class="movieTitle">{{ firstMovie.title }}</h1>
-            <button class="signBtn">Watch Now</button>
-          </div>
-          <img
-            :src="IMGPATH + firstMovie.backdrop_path"
-            class="d-block w-10"
-            alt="Slide 1"
-          />
-        </div>
-        <div class="carousel-item">
-          <div class="movieInfo">
-            <h1 class="movieTitle">{{ secondMovie.title }}</h1>
-            <button class="signBtn">Watch Now</button>
-          </div>
-          <img
-            :src="IMGPATH + secondMovie.backdrop_path"
-            class="d-block w-10"
-            alt="Slide 2"
-          />
-        </div>
-        <div class="carousel-item">
-          <div class="movieInfo">
-            <h1 class="movieTitle">{{ thirdMovie.title }}</h1>
-            <button class="signBtn">Watch Now</button>
-          </div>
-          <img
-            :src="IMGPATH + thirdMovie.backdrop_path"
-            class="d-block w-10"
-            alt="Slide 3"
-          />
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
+    <CarousselContainer />
     <MovieContainer />
     <MovieContainer2 />
     <Newsletter />
@@ -144,6 +63,7 @@
 import MovieContainer from "../components/MovieContainer.vue";
 import MovieContainer2 from "../components/MovieContainer2.vue";
 import Newsletter from "../components/Newsletter.vue";
+import CarousselContainer from "../components/CarousselContainer.vue";
 import { Modal } from "bootstrap";
 export default {
   data() {
@@ -155,9 +75,6 @@ export default {
       toggle: false,
       page: 2,
       toggleStyle: true,
-      firstMovie: "",
-      secondMovie: "",
-      thirdMovie: "",
       isNavShow: false,
       activeNav: "carouselExampleIndicators",
     };
@@ -166,6 +83,7 @@ export default {
     MovieContainer,
     MovieContainer2,
     Newsletter,
+    CarousselContainer,
   },
 
   async mounted() {
@@ -183,20 +101,10 @@ export default {
     async getMovies() {
       const APIURL =
         "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
-
       const response = await fetch(APIURL);
       const respdata = await response.json();
       const movies = respdata.results;
-
       this.movies = movies;
-
-      let randomInt1 = this.getRandomInt(1, 20);
-      let randomInt2 = this.getRandomInt(1, 20);
-      let randomInt3 = this.getRandomInt(1, 20);
-      this.firstMovie = movies[randomInt1];
-      this.secondMovie = movies[randomInt2];
-      this.thirdMovie = movies[randomInt3];
-
       // console.log(movies[0]);
     },
 
@@ -232,22 +140,19 @@ export default {
       const homeSectionTop = homeSection.offsetTop;
       const newsletterSectionTop = newsletterSection.offsetTop;
 
-      // console.log(newsletterSectionTop);
-
-      // Check each section's position relative to the scroll position
       if (scrollPosition >= newsletterSectionTop) {
         this.activeNav = "newsletter";
+        this.isScrolled = true;
       } else if (scrollPosition >= moviesSection2Top) {
         this.activeNav = "moviesSection2";
+        this.isScrolled = true;
       } else if (scrollPosition >= moviesSectionTop) {
         this.activeNav = "moviesSection";
+        this.isScrolled = true;
       } else if (scrollPosition >= homeSectionTop) {
         this.activeNav = "carouselExampleIndicators";
+        this.isScrolled = false;
       }
-    },
-
-    getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
     },
 
     searchMovie() {
@@ -260,10 +165,6 @@ export default {
 </script>
 
 <style>
-/* .carousel-inner {
-  height: 500px;
-} */
-
 .carousel-item img {
   object-fit: cover;
   height: 100vh;
