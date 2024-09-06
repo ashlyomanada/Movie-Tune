@@ -45,6 +45,9 @@
             Newsletter
           </a>
         </li>
+        <button @click.prevent="searchMovie" class="miniSearch search">
+          Search
+        </button>
       </ul>
       <button class="menuBtn" @click.prevent="showNavlists">
         <i class="fa-solid fa-bars" v-if="isNavShow"></i>

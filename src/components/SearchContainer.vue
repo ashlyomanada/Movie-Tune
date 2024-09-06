@@ -40,7 +40,7 @@
 
   <div class="searchedSectionContainer" v-if="isFound">
     <div class="searchHeader">
-      <h3>Search results for: {{ findedValue }}</h3>
+      <h3 class="searchTitle">Search results for: {{ findedValue }}</h3>
       <div class="d-flex gap-1">
         <button class="search" @click.prevent="searchMovie">Search</button>
         <button class="btn btn-dark" @click.prevent="closeSearchContainer">
@@ -48,7 +48,15 @@
         </button>
       </div>
     </div>
-    <div class="searchMovieboxesContainer">
+
+    <div
+      class="d-flex align-items-center justify-content-center h-100"
+      v-if="!found"
+    >
+      <h2 style="color: white; text-align: center">{{ errorMessage }}</h2>
+    </div>
+
+    <div class="searchMovieboxesContainer" v-if="found">
       <div
         class="movieBox"
         v-for="movie in searchedMovies"
@@ -70,7 +78,6 @@
         </div>
       </div>
     </div>
-    <h2 style="color: white">{{ errorMessage }}</h2>
   </div>
 
   <div class="showMovieInfoContainer" v-if="isShowMovieInfo">
@@ -155,6 +162,8 @@ export default {
       IMGPATH: "https://image.tmdb.org/t/p/w1280/",
       isFound: false,
       isShowMovieInfo: false,
+      errorMessage: "",
+      found: true,
     };
   },
 
@@ -171,10 +180,13 @@ export default {
       if (movies.length > 0) {
         this.searchedMovies = movies;
         this.findedValue = this.searchValue;
+        this.found = true;
         console.log(movies);
       } else {
         this.searchedMovies = null;
+        this.findedValue = this.searchValue;
         this.errorMessage = "No movies found";
+        this.found = false;
       }
     },
 
@@ -187,7 +199,7 @@ export default {
       this.selectedMovie.release_date = movies.release_date;
       this.selectedMovie.vote_average = movies.vote_average;
       this.isShowMovieInfo = !this.isShowMovieInfo;
-      console.log(movies);
+      // console.log(movies);
     },
 
     async getMovieTrailer(movieId) {

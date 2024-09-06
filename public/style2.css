@@ -380,7 +380,14 @@
   color: red;
 }
 
+.miniSearch {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
+  .searchedSectionContainer {
+    padding: 2rem;
+  }
   .moviesContainer {
     padding: 5vh 2rem 0 2rem;
   }
@@ -395,7 +402,7 @@
 
   .navBar {
     justify-content: space-between;
-    padding: 0 4rem;
+    padding: 0 2rem;
   }
   .navLists {
     position: absolute;
@@ -423,6 +430,9 @@
   .movieSectionContainer {
     padding: 1rem;
   }
+  .miniSearch {
+    display: unset;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -431,6 +441,10 @@
   }
   .moviesContainer {
     padding: 5vh 1rem 0 1rem;
+  }
+
+  .searchTitle {
+    font-size: 1rem;
   }
 
   .boxesContainer {
