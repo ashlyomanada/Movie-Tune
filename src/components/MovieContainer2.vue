@@ -1,43 +1,4 @@
 <template>
-  <div
-    class="modal fade"
-    id="searchModal"
-    tabindex="-1"
-    aria-labelledby="searchModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="searchModalLabel">Search Movie</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          >
-            <i class="fa-solid fa-xmark fa-2xl"></i>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex gap-2">
-            <input
-              type="email"
-              class="form-control"
-              id="exampleFormControlInput1"
-              placeholder="Search for movies..."
-              v-model="searchValue"
-              @change="getMovies"
-            />
-            <button class="signBtn" @click.prevent="searchMovies">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="moviesSection2" class="movieSection">
     <div class="movieSectionContainer">
       <h3>Movies</h3>
@@ -69,7 +30,11 @@
     </div>
 
     <div class="paginationNav">
-      <button class="signBtn" @click.prevent="getPageMovies(page--)">
+      <button
+        class="signBtn"
+        :disabled="page < 2"
+        @click.prevent="getPageMovies(page--)"
+      >
         Previous
       </button>
       <button class="nextBtn" @click.prevent="getPageMovies(page++)">
@@ -152,13 +117,13 @@ import { Modal } from "bootstrap";
 export default {
   data() {
     return {
-      searchValue: "",
       moreMovies: [],
       errorMessage: "",
       selectedMovie: [],
       trailerLink: "",
       isShowMovieInfo: false,
       IMGPATH: "https://image.tmdb.org/t/p/w1280/",
+      page: 1,
     };
   },
 
@@ -185,22 +150,7 @@ export default {
       const respdata = await response.json();
       const movies = respdata.results;
       this.moreMovies = movies;
-    },
-
-    async searchMovies() {
-      const searchMovieUrl =
-        "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
-      const response = await fetch(searchMovieUrl + this.searchValue);
-      const respdata = await response.json();
-      const movies = respdata.results;
-
-      if (movies.length > 0) {
-        this.moreMovies = movies;
-        // this.scrollToSection("moviesSection");
-      } else {
-        this.moreMovies = null;
-        this.errorMessage = "No movies found";
-      }
+      console.log(page);
     },
 
     async getMovieTrailer(movieId) {

@@ -52,7 +52,7 @@
       </button>
       <button class="search" @click.prevent="searchMovie">Search</button>
     </nav>
-
+    <SearchContainer />
     <CarousselContainer />
     <MovieContainer />
     <MovieContainer2 />
@@ -64,6 +64,7 @@ import MovieContainer from "../components/MovieContainer.vue";
 import MovieContainer2 from "../components/MovieContainer2.vue";
 import Newsletter from "../components/Newsletter.vue";
 import CarousselContainer from "../components/CarousselContainer.vue";
+import SearchContainer from "../components/SearchContainer.vue";
 import { Modal } from "bootstrap";
 export default {
   data() {
@@ -84,6 +85,7 @@ export default {
     MovieContainer2,
     Newsletter,
     CarousselContainer,
+    SearchContainer,
   },
 
   async mounted() {
